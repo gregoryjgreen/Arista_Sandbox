@@ -1,7 +1,9 @@
 conf t
-alias bw sh int | grep -E -A 10 'connected' | grep -Ev 'Hardware|MTU|:|bytes|Up|status|(A|a)ddress|Vlan|--' | sed 'N;N;s/\n/ /g' | awk '{print $1"\t- " $11, $13 $14,"\t- " $23, $25 $26 }'
-alias bwin sh int | grep -E -A 10 'connected' | grep -Ev 'Hardware|MTU|:|bytes|Up|status|(A|a)ddress|Vlan|--' | sed 'N;N;s/\n/ /g' | awk '{print $1"\t- " $11, $13 $14,"\t- " $23, $25 $26 }' | sort -k 4 -hr | nl | head -10
-alias bwout sh int | grep -E -A 10 'connected' | grep -Ev 'Hardware|MTU|:|bytes|Up|status|(A|a)ddress|Vlan|--' | sed 'N;N;s/\n/ /g' | awk '{print $1"\t- " $11, $13 $14,"\t- " $23, $25 $26 }' | sort -k 7 -hr | nl | head -10
+alias bw sh int | grep -E -A 12 'connected' | grep -Ev 'Hardware|MTU|:|bytes|Up|status|(A|a)ddress|Vlan|duplex|--|clearing|Member|multicast|runts' | sed 'N;N;s/\n/ /g' | awk '{print $1"\t- " $11, $13 $14,"\t- " $23, $25 $26 }'
+alias bwin sh int | grep -E -A 12 'connected' | grep -Ev 'Hardware|MTU|:|bytes|Up|status|(A|a)ddress|Vlan|duplex|--|clearing|Member|multicast|runts' | sed 'N;N;s/\n/ /g' | awk '{print $1"\t- " $11, $13 $14,"\t- " $23, $25 $26 }' | sort -k 4 -hr | nl | head 
+-10
+alias bwout sh int | grep -E -A 12 'connected' | grep -Ev 'Hardware|MTU|:|bytes|Up|status|(A|a)ddress|Vlan|duplex|--|clearing|Member|multicast|runts' | sed 'N;N;s/\n/ /g' | awk '{print $1"\t- " $11, $13 $14,"\t- " $23, $25 $26 }' | sort -k 7 -hr | nl | head 
+-10
 end
 wr me
 
